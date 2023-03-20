@@ -1,0 +1,24 @@
+{
+  "name": "meps-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DarkwingDuck255/meps-server.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DarkwingDuck255/meps-server/issues"
+  },
+  "homepage": "https://github.com/DarkwingDuck255/meps-server#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodemailer": "^6.9.1"
+  }
+}
