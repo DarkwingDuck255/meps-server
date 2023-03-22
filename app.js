@@ -16,9 +16,10 @@ app.listen(PORT, () => {
 
 app.post('/', (req, res) => {
 
-    if(!req.body.email) return res.sendStatus(400)   
+    if(!req.body.email || !req.body.text) return res.sendStatus(400)
+
     const message = {        
-        to: `ars255@gmail.com`,
+        to: `ars081190@yandex.ru`,
         subject: 'Сообщение с сайта',
         html: `
         <h2>Мы получили данные с сайта.</h2>
@@ -31,6 +32,7 @@ app.post('/', (req, res) => {
     }
     mailer(message)
     user = req.body
+    res.sendStatus(200)
 })
 
 
