@@ -16,7 +16,7 @@ app.listen(PORT, () => {
 
 app.post('/', (req, res) => {
 
-    if(!req.body.email || !req.body.text) return res.sendStatus(400)
+    if(!req.body.email && !req.body.name && !req.body.tel) return res.sendStatus(400)
 
     const message = {        
         to: `ars081190@yandex.ru`,
@@ -24,11 +24,11 @@ app.post('/', (req, res) => {
         html: `
         <h2>Мы получили данные с сайта.</h2>
         
-        <p>${req.body.name}</p>
-        <p>${req.body.company}</p>
-        <p>${req.body.tel}</p>
-        <p>${req.body.email}</p>
-        <p>${req.body.text}</p>`
+        <p>Имя: ${req.body.name}</p>
+        <p>Компания: ${req.body.company}</p>
+        <p>Телефон: ${req.body.tel}</p>
+        <p>Email: ${req.body.email}</p>
+        <p>Сообщение: ${req.body.text}</p>`
     }
     mailer(message)
     user = req.body
