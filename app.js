@@ -16,9 +16,9 @@ app.listen(PORT, () => {
 
 app.post('/', (req, res) => {
 
-    if(!req.body.email && !req.body.name && !req.body.tel) return res.sendStatus(400)
+    if (!req.body.email && !req.body.name && !req.body.tel) return res.sendStatus(400)
 
-    const message = {        
+    const message = {
         to: `ars081190@yandex.ru`,
         subject: 'Сообщение с сайта',
         html: `
@@ -44,4 +44,47 @@ app.get('/', (req, res) => {
           </body>
           </html>`
     );
-}); 
+});
+
+// отправка в телегу данных формы
+const TelegramBot = require('node-telegram-bot-api');
+const token = 'YOUR_TOKEN';
+const bot = new TelegramBot(token, { polling: true });
+
+app.post('/send-msg', (req, res) => {
+    const name = req.body.name;
+    const tel = req.body.tel;
+    const email = req.body.email;
+    const company = req.body.company;
+    const message = req.body.message;
+
+    const text = `Сообщение от ${name}, 
+Компания: ${company}, 
+Tel: ${tel}, 
+Email: ${email},
+Сообщение: 
+${message}`;
+    console.log(text)
+    // bot.sendMessage(chatId, text);
+    sendToRecipients(text)
+
+    res.sendStatus(200);
+});
+
+bot.onText(/\/start/, (msg) => {
+    bot.sendMessage(msg.chat.id, "Привет! Я бот, который может отправлять сообщения с сайта в телеграм. Просто отправь мне сообщение из формы обратной связи, и я буду пересылать тебе его содержимое.");
+});
+
+function sendToRecipients(text) {
+    const chatId = [`82205113`, ``]
+    chatId.forEach((recipient) => {
+      bot.sendMessage(recipient, text);
+    });
+  }
+
+bot.on('message', (msg) => {
+    const chatId = msg.chat.id;
+    const message = msg.text;
+
+    bot.sendMessage(chatId, message);
+});
