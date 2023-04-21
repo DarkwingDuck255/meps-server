@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const mailer = require('./nodemailer')
 const cors = require('./cors.js')
 
-const { PORT = 3001 } = process.env;
+const { PORT = 3000 } = process.env;
 const app = express();
 let user
 
