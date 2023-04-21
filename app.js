@@ -36,7 +36,7 @@ app.post('/send-email', (req, res) => {
 })
 
 
-app.get('/', (req, res) => {
+app.get('/api/send-email', (req, res) => {
     res.send(
         `<html>
           <body>
@@ -51,7 +51,7 @@ const TelegramBot = require('node-telegram-bot-api');
 const token = 'YOUR_TOKEN';
 const bot = new TelegramBot(token, { polling: true });
 
-app.post('/send-msg', (req, res) => {
+app.post('/api/send-msg', (req, res) => {
     const name = req.body.name;
     const tel = req.body.tel;
     const email = req.body.email;
