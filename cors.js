@@ -1,6 +1,8 @@
 const allowedCors = [
     'http://localhost:3000',
     'http://localhost:3001',
+    'http://meps.uz',
+    'https://meps.uz',
   ];
   
   const cors = (req, res, next) => {
