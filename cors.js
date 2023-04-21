@@ -5,6 +5,8 @@ const allowedCors = [
     'https://meps.uz',
     'http://95.46.96.80',
     'https://95.46.96.80',
+    'www.meps.uz',
+    'meps.uz',
   ];
   
   const cors = (req, res, next) => {
