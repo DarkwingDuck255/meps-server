@@ -14,7 +14,7 @@ app.listen(PORT, () => {
     console.log(`серв запущен на ${PORT} порту`);
 });
 
-app.post('/send-email', (req, res) => {
+app.post('/api/send-email', (req, res) => {
 
     if (!req.body.email && !req.body.name && !req.body.tel) return res.sendStatus(400)
 
